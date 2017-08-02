@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package sample;
+package org.springframework.session.mongodb.examples;
 
 import java.util.Set;
 
@@ -26,8 +26,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import sample.pages.HomePage;
-import sample.pages.LoginPage;
+import org.springframework.session.mongodb.examples.pages.HomePage;
+import org.springframework.session.mongodb.examples.pages.LoginPage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

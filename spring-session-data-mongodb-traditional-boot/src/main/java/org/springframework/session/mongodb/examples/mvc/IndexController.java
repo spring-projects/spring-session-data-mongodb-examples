@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2017 the original author or authors.
+ * Copyright 2014-2016 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,28 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package org.springframework.session.mongodb.examples.mvc;
 
-package sample.pages;
-
-import org.openqa.selenium.WebDriver;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * @author Pool Dolorier
+ * Controller for sending the user to the login view.
+ *
+ * @author Rob Winch
+ *
  */
-public abstract class BasePage {
-
-	private WebDriver driver;
-
-	public BasePage(WebDriver driver) {
-		this.driver = driver;
-	}
-
-	public WebDriver getDriver() {
-		return this.driver;
-	}
-
-	public static void get(WebDriver driver, String get) {
-		String baseUrl = "http://localhost";
-		driver.get(baseUrl + get);
+@Controller
+public class IndexController {
+	@RequestMapping("/")
+	public String index() {
+		return "index";
 	}
 }

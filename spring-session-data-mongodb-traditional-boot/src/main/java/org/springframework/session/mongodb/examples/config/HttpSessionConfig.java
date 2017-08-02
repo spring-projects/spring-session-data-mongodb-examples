@@ -13,21 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package sample.mvc;
+package org.springframework.session.mongodb.examples.config;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.context.annotation.Bean;
+import org.springframework.session.data.mongo.JdkMongoSessionConverter;
+import org.springframework.session.data.mongo.config.annotation.web.http.EnableMongoHttpSession;
 
-/**
- * Controller for sending the user to the login view.
- *
- * @author Rob Winch
- *
- */
-@Controller
-public class IndexController {
-	@RequestMapping("/")
-	public String index() {
-		return "index";
+// tag::class[]
+@EnableMongoHttpSession // <1>
+public class HttpSessionConfig {
+
+	@Bean
+	public JdkMongoSessionConverter jdkMongoSessionConverter() {
+		return new JdkMongoSessionConverter(); // <2>
 	}
 }
+// end::class[]

@@ -4,19 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.springframework.session.data.mongodb</groupId>
+	<parent>
+		<groupId>org.springframework.session.data.mongodb</groupId>
+		<artifactId>spring-session-data-mongodb-examples</artifactId>
+		<version>1.0.0.BUILD-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.springframework.session.data.mongodb</groupId>
     <artifactId>spring-session-data-mongodb-traditional-boot</artifactId>
     <packaging>jar</packaging>
 
-    <parent>
-        <groupId>org.springframework.session.data.mongodb</groupId>
-        <artifactId>spring-session-data-mongodb-examples</artifactId>
-        <version>1.0.0.BUILD-SNAPSHOT</version>
-    </parent>
+	<name>Spring Session MongoDB - Examples - Traditional Boot</name>
 
-    <name>Spring Session MongoDB - Examples - Traditional Boot</name>
-
-    <dependencies>
+	<dependencies>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

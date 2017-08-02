@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package sample.pages;
+package org.springframework.session.mongodb.examples.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

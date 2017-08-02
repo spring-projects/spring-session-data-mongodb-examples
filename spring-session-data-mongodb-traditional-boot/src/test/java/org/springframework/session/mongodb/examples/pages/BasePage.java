@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 the original author or authors.
+ * Copyright 2014-2017 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,19 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package sample.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.session.data.mongo.JdkMongoSessionConverter;
-import org.springframework.session.data.mongo.config.annotation.web.http.EnableMongoHttpSession;
+package org.springframework.session.mongodb.examples.pages;
 
-// tag::class[]
-@EnableMongoHttpSession // <1>
-public class HttpSessionConfig {
+import org.openqa.selenium.WebDriver;
 
-	@Bean
-	public JdkMongoSessionConverter jdkMongoSessionConverter() {
-		return new JdkMongoSessionConverter(); // <2>
+/**
+ * @author Pool Dolorier
+ */
+public abstract class BasePage {
+
+	private WebDriver driver;
+
+	public BasePage(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	public WebDriver getDriver() {
+		return this.driver;
+	}
+
+	public static void get(WebDriver driver, String get) {
+		String baseUrl = "http://localhost";
+		driver.get(baseUrl + get);
 	}
 }
-// end::class[]
