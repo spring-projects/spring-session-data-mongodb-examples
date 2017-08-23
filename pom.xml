@@ -25,6 +25,7 @@
 	
 	<modules>
 		<module>spring-session-data-mongodb-traditional-boot</module>
+		<module>spring-session-data-mongodb-reactive-boot</module>
 	</modules>
 
 	<parent>

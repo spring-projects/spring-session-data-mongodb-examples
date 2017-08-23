@@ -14,7 +14,7 @@
     <artifactId>spring-session-data-mongodb-traditional-boot</artifactId>
     <packaging>jar</packaging>
 
-	<name>Spring Session MongoDB - Examples - Traditional Boot</name>
+	<name>Spring Session MongoDB - Examples - Traditional Spring Boot</name>
 
 	<dependencies>
 
