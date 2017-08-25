@@ -17,7 +17,7 @@ package org.springframework.session.mongodb.examples;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.session.data.mongo.EnableMongoWebSession;
+import org.springframework.session.data.mongo.config.annotation.web.reactive.EnableMongoWebSession;
 
 /**
  * Pure Spring-based application (using Spring Boot for dependency management), hence no autoconfiguration.
