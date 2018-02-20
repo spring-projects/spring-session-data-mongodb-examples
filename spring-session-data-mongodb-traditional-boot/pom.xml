@@ -18,10 +18,12 @@
 
 	<dependencies>
 
+		<!-- tag::spring-data-mongodb[] -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
+		<!-- end::spring-data-mongodb[] -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
