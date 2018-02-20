@@ -55,11 +55,13 @@
 	</profiles>
 
 	<dependencies>
+		<!-- tag::spring-session-data-mongodb[] -->
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-data-mongodb</artifactId>
 			<version>${spring-session-data-mongodb.version}</version>
 		</dependency>
+		<!-- end::spring-session-data-mongodb[] -->
 	</dependencies>
 	
 	<repositories>
