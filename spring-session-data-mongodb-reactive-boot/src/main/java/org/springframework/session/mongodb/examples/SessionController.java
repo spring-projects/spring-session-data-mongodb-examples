@@ -33,12 +33,14 @@ public class SessionController {
 
 	@PostMapping("/session")
 	public String setAttribute(@ModelAttribute SessionAttributeForm sessionAttributeForm, WebSession session) {
+
 		session.getAttributes().put(sessionAttributeForm.getAttributeName(), sessionAttributeForm.getAttributeValue());
 		return "redirect:/";
 	}
 
 	@GetMapping("/")
 	public String index(Model model, WebSession webSession) {
+		
 		model.addAttribute("webSession", webSession);
 		return "index";
 	}
