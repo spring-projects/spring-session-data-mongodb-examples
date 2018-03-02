@@ -15,19 +15,11 @@
  */
 package org.springframework.session.mongodb.examples.config;
 
-import java.time.Duration;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.session.data.mongo.JdkMongoSessionConverter;
 import org.springframework.session.data.mongo.config.annotation.web.http.EnableMongoHttpSession;
 
 // tag::class[]
-@EnableMongoHttpSession // <1>
+@EnableMongoHttpSession(maxInactiveIntervalInSeconds = 1800) // <1>
 public class HttpSessionConfig {
 
-	@Bean
-	public JdkMongoSessionConverter jdkMongoSessionConverter() {
-		return new JdkMongoSessionConverter(Duration.ofMinutes(30)); // <2>
-	}
 }
 // end::class[]
