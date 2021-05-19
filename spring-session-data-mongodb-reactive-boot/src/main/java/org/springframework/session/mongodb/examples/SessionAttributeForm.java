@@ -16,16 +16,54 @@
 
 package org.springframework.session.mongodb.examples;
 
-import lombok.Data;
+import java.util.Objects;
 
 /**
  * @author Rob Winch
  * @author Greg Turnquist
  * @since 5.0
  */
-@Data
 public class SessionAttributeForm {
 
 	private String attributeName;
 	private String attributeValue;
+
+	public String getAttributeName() {
+		return attributeName;
+	}
+
+	public void setAttributeName(String attributeName) {
+		this.attributeName = attributeName;
+	}
+
+	public String getAttributeValue() {
+		return attributeValue;
+	}
+
+	public void setAttributeValue(String attributeValue) {
+		this.attributeValue = attributeValue;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+
+		if (this == o)
+			return true;
+		if (!(o instanceof SessionAttributeForm))
+			return false;
+		SessionAttributeForm that = (SessionAttributeForm) o;
+		return Objects.equals(attributeName, that.attributeName) && Objects.equals(attributeValue, that.attributeValue);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(attributeName, attributeValue);
+	}
+
+	@Override
+	public String toString() {
+
+		return "SessionAttributeForm{" + "attributeName='" + attributeName + '\'' + ", attributeValue='" + attributeValue
+				+ '\'' + '}';
+	}
 }

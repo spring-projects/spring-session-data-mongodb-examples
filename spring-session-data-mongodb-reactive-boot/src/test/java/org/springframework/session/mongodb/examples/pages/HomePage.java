@@ -20,6 +20,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
@@ -45,16 +46,19 @@ public class HomePage {
 	List<Attribute> attributes;
 
 	public HomePage(WebDriver driver) {
+
 		this.driver = driver;
 		this.attributes = new ArrayList<>();
 	}
 
 	private static void get(WebDriver driver, int port, String get) {
+
 		String baseUrl = "http://localhost:" + port;
 		driver.get(baseUrl + get);
 	}
 
 	public static HomePage go(WebDriver driver, int port) {
+
 		get(driver, port, "/");
 		return PageFactory.initElements(driver, HomePage.class);
 	}
@@ -64,11 +68,13 @@ public class HomePage {
 	}
 
 	public List<Attribute> attributes() {
-		List<Attribute> rows = new ArrayList<>();
-		for (WebElement tr : this.trs) {
-			rows.add(new Attribute(tr));
-		}
+
+		List<Attribute> rows = this.trs.stream() //
+				.map(Attribute::new) //
+				.collect(Collectors.toList());
+
 		this.attributes.addAll(rows);
+
 		return this.attributes;
 	}
 
@@ -77,6 +83,7 @@ public class HomePage {
 	}
 
 	public class Form {
+
 		@FindBy(name = "attributeName")
 		WebElement attributeName;
 
@@ -91,22 +98,26 @@ public class HomePage {
 		}
 
 		public Form attributeName(String text) {
+
 			this.attributeName.sendKeys(text);
 			return this;
 		}
 
 		public Form attributeValue(String text) {
+
 			this.attributeValue.sendKeys(text);
 			return this;
 		}
 
 		public <T> T submit(Class<T> page) {
+
 			this.submit.click();
 			return PageFactory.initElements(HomePage.this.driver, page);
 		}
 	}
 
 	public static class Attribute {
+
 		@FindBy(xpath = ".//td[1]")
 		WebElement attributeName;
 

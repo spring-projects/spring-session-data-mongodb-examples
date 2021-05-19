@@ -16,35 +16,36 @@
 
 package org.springframework.session.mongodb.examples.pages;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Pool Dolorier
  */
 public class HomePage extends BasePage {
 
-	@FindBy(css = "input[type='submit']")
-	private WebElement submit;
+	@FindBy(css = "input[type='submit']") private WebElement submit;
 
 	public HomePage(WebDriver driver) {
 		super(driver);
 	}
 
 	public static HomePage go(WebDriver driver) {
+
 		get(driver, "/");
 		return PageFactory.initElements(driver, HomePage.class);
 	}
 
 	public LoginPage unauthenticated() {
-		return  LoginPage.go(getDriver());
+		return LoginPage.go(getDriver());
 	}
 
 	public LoginPage logout() {
+
 		this.submit.click();
 		return LoginPage.go(getDriver());
 	}

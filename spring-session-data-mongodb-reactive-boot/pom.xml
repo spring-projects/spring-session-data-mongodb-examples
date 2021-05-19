@@ -12,7 +12,6 @@
 
 	<groupId>org.springframework.session.data.mongodb</groupId>
 	<artifactId>spring-session-data-mongodb-reactive-boot</artifactId>
-	<packaging>jar</packaging>
 
 	<name>Spring Session MongoDB - Examples - Reactive Spring Boot</name>
 
@@ -34,11 +33,7 @@
 			<groupId>de.flapdoodle.embed</groupId>
 			<artifactId>de.flapdoodle.embed.mongo</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

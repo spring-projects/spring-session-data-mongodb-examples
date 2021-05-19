@@ -15,8 +15,8 @@
 		<developer>
 			<id>gturnquist</id>
 			<name>Greg Turnquist</name>
-			<email>gturnquist@pivotal.io</email>
-			<organization>Pivotal Software, Inc.</organization>
+			<email>gturnquist@vmware.com</email>
+			<organization>VMware</organization>
 			<roles>
 				<role>Project Lead</role>
 			</roles>
@@ -31,7 +31,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.RC1</version>
+		<version>2.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -39,24 +39,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<spring-session.version>2.0.2.RELEASE</spring-session.version>
-		<spring-session-data-mongodb.version>2.0.2.RELEASE</spring-session-data-mongodb.version>
-		<spring-data-releasetrain.version>Kay-SR4</spring-data-releasetrain.version>
+		<spring-session.version>2.5.0</spring-session.version>
+		<spring-session-data-mongodb.version>2.5.0</spring-session-data-mongodb.version>
+		<spring-data-releasetrain.version>2021.0.0</spring-data-releasetrain.version>
 	</properties>
-
-	<profiles>
-		<profile>
-			<id>spring5-next</id>
-			<properties>
-				<jackson.version>2.9.0</jackson.version>
-				<spring.version>5.0.5.BUILD-SNAPSHOT</spring.version>
-				<spring-session.version>2.0.3.BUILD-SNAPSHOT</spring-session.version>
-				<spring-session-data-mongodb.version>2.0.3.BUILD-SNAPSHOT</spring-session-data-mongodb.version>
-				<spring-data-releasetrain.version>Lovelace-BUILD-SNAPSHOT</spring-data-releasetrain.version>
-				<spring-security.version>5.0.3.BUILD-SNAPSHOT</spring-security.version>
-			</properties>
-		</profile>
-	</profiles>
 
 	<dependencies>
 		<!-- tag::spring-session-data-mongodb[] -->
@@ -67,43 +53,5 @@
 		</dependency>
 		<!-- end::spring-session-data-mongodb[] -->
 	</dependencies>
-	
-	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-	
 </project>

@@ -16,44 +16,43 @@
 
 package org.springframework.session.mongodb.examples.pages;
 
+import static org.assertj.core.api.Assertions.*;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Pool Dolorier
  */
 public class LoginPage extends BasePage {
 
-	@FindBy(name = "username")
-	private WebElement username;
+	@FindBy(name = "username") private WebElement username;
 
-	@FindBy(name = "password")
-	private WebElement password;
+	@FindBy(name = "password") private WebElement password;
 
-	@FindBy(css = "input[name='submit']")
-	private WebElement submit;
+	@FindBy(css = "button[type='submit']") private WebElement submit;
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
 	}
 
 	public static LoginPage go(WebDriver driver) {
+
 		get(driver, "/login");
 		return PageFactory.initElements(driver, LoginPage.class);
 	}
 
 	public void assertAt() {
-		assertThat(getDriver().getTitle()).isEqualTo("Login Page");
+		assertThat(getDriver().getTitle()).isEqualTo("Please sign in");
 	}
 
 	public HomePage login(String user, String password) {
+
 		this.username.sendKeys(user);
 		this.password.sendKeys(password);
 		this.submit.click();
-		return  HomePage.go(getDriver());
+		return HomePage.go(getDriver());
 	}
 }

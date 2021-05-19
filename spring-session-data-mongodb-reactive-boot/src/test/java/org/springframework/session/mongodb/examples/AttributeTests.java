@@ -16,73 +16,69 @@
 
 package org.springframework.session.mongodb.examples;
 
-
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.session.mongodb.examples.pages.HomePage;
 import org.springframework.session.mongodb.examples.pages.HomePage.Attribute;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 /**
  * @author Eddú Meléndez
  * @author Rob Winch
  */
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class AttributeTests {
 
-	@LocalServerPort
-	int port;
+	@LocalServerPort int port;
 
 	private WebDriver driver;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		this.driver = new HtmlUnitDriver();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() {
 		this.driver.quit();
 	}
 
 	@Test
 	public void home() {
+
 		HomePage home = HomePage.go(this.driver, this.port);
 		home.assertAt();
 	}
 
 	@Test
 	public void noAttributes() {
+
 		HomePage home = HomePage.go(this.driver, this.port);
 		assertThat(home.attributes()).isEmpty();
 	}
 
 	@Test
 	public void createAttribute() {
+
 		HomePage home = HomePage.go(this.driver, this.port);
-		// @formatter:off
-		home = home.form()
-				.attributeName("a")
-				.attributeValue("b")
-				.submit(HomePage.class);
-		// @formatter:on
+		home = home.form().attributeName("a").attributeValue("b").submit(HomePage.class);
 
 		List<Attribute> attributes = home.attributes();
 		assertThat(attributes).hasSize(1);
+
 		Attribute row = attributes.get(0);
 		assertThat(row.getAttributeName()).isEqualTo("a");
 		assertThat(row.getAttributeValue()).isEqualTo("b");
 	}
-
 }

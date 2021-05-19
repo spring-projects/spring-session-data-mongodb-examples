@@ -12,7 +12,6 @@
 
 	<groupId>org.springframework.session.data.mongodb</groupId>
     <artifactId>spring-session-data-mongodb-traditional-boot</artifactId>
-    <packaging>jar</packaging>
 
 	<name>Spring Session MongoDB - Examples - Traditional Spring Boot</name>
 
@@ -41,6 +40,10 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>de.flapdoodle.embed</groupId>
 			<artifactId>de.flapdoodle.embed.mongo</artifactId>
 		</dependency>
@@ -58,6 +61,11 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-support</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
     </dependencies>

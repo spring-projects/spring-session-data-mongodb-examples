@@ -40,7 +40,7 @@ public class SessionController {
 
 	@GetMapping("/")
 	public String index(Model model, WebSession webSession) {
-		
+
 		model.addAttribute("webSession", webSession);
 		return "index";
 	}

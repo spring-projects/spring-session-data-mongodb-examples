@@ -16,56 +16,53 @@
 
 package org.springframework.session.mongodb.examples;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.Set;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.springframework.session.mongodb.examples.pages.HomePage;
-import org.springframework.session.mongodb.examples.pages.LoginPage;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.session.mongodb.examples.pages.HomePage;
+import org.springframework.session.mongodb.examples.pages.LoginPage;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.htmlunit.webdriver.MockMvcHtmlUnitDriverBuilder;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Pool Dolorier
  */
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc
 @SpringBootTest(webEnvironment = WebEnvironment.MOCK)
 public class BootTests {
 
-	@Autowired
-	private MockMvc mockMvc;
+	@Autowired private MockMvc mockMvc;
 
 	private WebDriver driver;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
-		this.driver = MockMvcHtmlUnitDriverBuilder
-				.mockMvcSetup(this.mockMvc)
-				.build();
+		this.driver = MockMvcHtmlUnitDriverBuilder.mockMvcSetup(this.mockMvc).build();
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() {
 		this.driver.quit();
 	}
 
 	@Test
 	public void unauthenticatedUserSentToLogInPage() {
+
 		HomePage homePage = HomePage.go(this.driver);
 		LoginPage loginPage = homePage.unauthenticated();
 		loginPage.assertAt();
@@ -73,10 +70,13 @@ public class BootTests {
 
 	@Test
 	public void logInViewsHomePage() {
+
 		LoginPage loginPage = LoginPage.go(this.driver);
 		loginPage.assertAt();
+
 		HomePage homePage = loginPage.login("user", "password");
 		homePage.assertAt();
+
 		WebElement username = homePage.getDriver().findElement(By.id("un"));
 		assertThat(username.getText()).isEqualTo("user");
 		Set<Cookie> cookies = homePage.getDriver().manage().getCookies();
@@ -86,19 +86,24 @@ public class BootTests {
 
 	@Test
 	public void logoutSuccess() {
+
 		LoginPage loginPage = LoginPage.go(this.driver);
 		HomePage homePage = loginPage.login("user", "password");
 		LoginPage successLogoutPage = homePage.logout();
+
 		successLogoutPage.assertAt();
 	}
 
 	@Test
 	public void loggedOutUserSentToLoginPage() {
+
 		LoginPage loginPage = LoginPage.go(this.driver);
 		HomePage homePage = loginPage.login("user", "password");
 		homePage.logout();
+
 		HomePage backHomePage = HomePage.go(this.driver);
 		LoginPage backLoginPage = backHomePage.unauthenticated();
+
 		backLoginPage.assertAt();
 	}
 }

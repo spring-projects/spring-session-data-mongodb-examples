@@ -34,6 +34,7 @@ public abstract class BasePage {
 	}
 
 	public static void get(WebDriver driver, String get) {
+
 		String baseUrl = "http://localhost";
 		driver.get(baseUrl + get);
 	}
